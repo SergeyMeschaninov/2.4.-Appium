@@ -1,0 +1,35 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.9.22"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Здесь находятся только плагины сборщика Gradle
+        classpath "com.android.tools.build:gradle:8.3.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    // Переносим зависимости Appium сюда, чтобы они автоматически
+    // добавились во все модули (включая модуль 'app')
+    dependencies {
+        // Проверяем наличие плагина java, чтобы избежать старой ошибки
+        if (project.plugins.hasPlugin('java') || project.plugins.hasPlugin('com.android.application') || project.plugins.hasPlugin('com.android.library')) {
+            testImplementation "io.appium:java-client:9.2.2"
+            testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+        }
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}

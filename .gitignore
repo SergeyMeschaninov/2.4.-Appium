@@ -1,0 +1,22 @@
+# Временные файлы сборки Gradle (ИГНОРИРУЕМ)
+.gradle/
+build/
+app/build/
+
+# Локальные конфигурации конкретного ПК (ИГНОРИРУЕМ)
+local.properties
+.idea/workspace.xml
+.idea/libraries/
+.idea/modules.xml
+.externalNativeBuild/
+.cxx/
+
+# Сгенерированные артефакты приложения (ИГНОРИРУЕМ)
+*.apk
+*.ap_
+*.aab
+output-metadata.json
+
+# Логи системы
+*.log
+.DS_Store
